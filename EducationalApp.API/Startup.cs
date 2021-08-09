@@ -1,5 +1,6 @@
 using EducationalApp.Data;
 using EducationalApp.Data.Infrastructure;
+using EducationalApp.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,10 @@ namespace EducationalApp.API
         {
             services.AddDbContext<ApplicationDbContext>();
             services.AddMvc();
+            services.AddScoped<IUnitOfWork<ApplicationDbContext>, UnitOfWork<ApplicationDbContext>>();
+            services.AddScoped<IRepository<Order>, Repository<Order>>();
+            services.AddScoped<IRepository<Product>, Repository<Product>>();
+            services.AddScoped<IRepository<Supplier>, Repository<Supplier>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
