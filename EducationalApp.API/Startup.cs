@@ -1,4 +1,5 @@
 using EducationalApp.Data;
+using EducationalApp.Data.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

@@ -1,24 +1,15 @@
-﻿
-using EducationalApp.Data.Infrastructure;
+﻿using EducationalApp.Data.Infrastructure;
 using EducationalApp.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalApp.Data.Repository
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : Repository<Order>, IOrderRepository
     {
-        public Order GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(Order order)
-        {
-            throw new NotImplementedException();
-        }
+        public OrderRepository(ApplicationDbContext context):base(context)
+        {}
+        public OrderRepository(IUnitOfWork<ApplicationDbContext> unitOfWork):base(unitOfWork)
+        {}
     }
+    public interface IOrderRepository : IRepository<Order>
+    { }
 }

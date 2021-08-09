@@ -1,33 +1,15 @@
 ﻿using EducationalApp.Data.Infrastructure;
 using EducationalApp.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalApp.Data.Repository
 {
-    public class SuppliersRepository : ISupplierRepository
+    public class SuppliersRepository : Repository<Supplier>, ISupplierRepository
     {
-        public void Delete(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Supplier[] GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Supplier GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(Supplier supplier)
-        {
-            throw new NotImplementedException();
-        }
+        public SuppliersRepository(ApplicationDbContext context):base(context)
+        { }
+        public SuppliersRepository(IUnitOfWork<ApplicationDbContext> unitOfWork) : base(unitOfWork)
+        { }
     }
+    public interface ISupplierRepository : IRepository<Supplier>
+    { }
 }
