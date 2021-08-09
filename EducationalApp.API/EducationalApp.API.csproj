@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EducationalApp.Domain.DAL\EducationalApp.Domain.DAL.csproj" />
-    <ProjectReference Include="..\EducationalApp.Infrastructure.Contexts\EducationalApp.Infrastructure.Contexts.csproj" />
+    <ProjectReference Include="..\EducationalApp.Infrastructure.Contexts\EducationalApp.Data.csproj" />
   </ItemGroup>
+
+ 
 
 </Project>

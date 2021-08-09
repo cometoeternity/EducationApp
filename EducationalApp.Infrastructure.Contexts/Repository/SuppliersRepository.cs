@@ -1,13 +1,14 @@
-﻿using EducationalApp.Domain.DAL;
+﻿using EducationalApp.Data.Infrastructure;
+using EducationalApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EducationalApp.Infrastructure.Contexts
+namespace EducationalApp.Data.Repository
 {
-    public class SqlSuppliersRepository : ISupplierRepository
+    public class SuppliersRepository : ISupplierRepository
     {
         public void Delete(Guid id)
         {

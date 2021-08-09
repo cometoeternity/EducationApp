@@ -1,7 +1,8 @@
-﻿using EducationalApp.Domain.DAL;
+﻿using EducationalApp.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace EducationalApp.Infrastructure.Contexts
+namespace EducationalApp.Data
+
 {
     public class ApplicationDbContext : DbContext
     {

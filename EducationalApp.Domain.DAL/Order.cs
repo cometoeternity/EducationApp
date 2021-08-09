@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EducationalApp.Domain.DAL
+namespace EducationalApp.Model
 {
     public class Order
     {
@@ -17,6 +17,5 @@ namespace EducationalApp.Domain.DAL
         public int? FlatNumber { get; set; }
         public string Zip { get; set; }
         public string Country { get; set; }
-
     }
 }

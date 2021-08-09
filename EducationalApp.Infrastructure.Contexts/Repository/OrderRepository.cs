@@ -1,13 +1,15 @@
-﻿using EducationalApp.Domain.DAL;
+﻿
+using EducationalApp.Data.Infrastructure;
+using EducationalApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EducationalApp.Infrastructure.Contexts
+namespace EducationalApp.Data.Repository
 {
-    public class SqlOrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         public Order GetById(Guid id)
         {

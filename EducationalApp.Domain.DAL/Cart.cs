@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EducationalApp.Domain.DAL
+namespace EducationalApp.Model
 {
     public class Cart
     {

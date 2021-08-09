@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalApp.API", "EducationalApp.API\EducationalApp.API.csproj", "{D2ABDA26-965D-4E9A-80EC-C545B16829B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalApp.Domain.DAL", "EducationalApp.Domain.DAL\EducationalApp.Domain.DAL.csproj", "{E156D6DB-FBE8-4473-B7AD-FACFF1161BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalApp.Model", "EducationalApp.Domain.DAL\EducationalApp.Model.csproj", "{E156D6DB-FBE8-4473-B7AD-FACFF1161BB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalApp.Infrastructure.Contexts", "EducationalApp.Infrastructure.Contexts\EducationalApp.Infrastructure.Contexts.csproj", "{E739697D-BA3D-449F-AFFB-5468D4EB0576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalApp.Data", "EducationalApp.Infrastructure.Contexts\EducationalApp.Data.csproj", "{E739697D-BA3D-449F-AFFB-5468D4EB0576}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
