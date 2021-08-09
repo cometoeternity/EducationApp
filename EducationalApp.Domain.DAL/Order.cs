@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationalApp.Model.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace EducationalApp.Model
 {
-    public class Order
+    public class Order : BaseEntity
     {
-        public Guid Id { get; set; }
+        
         public string Name { get; set; }
         public string State { get; set; }
         public string City { get; set; }
