@@ -26,12 +26,14 @@ namespace EducationalApp.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase(databaseName:"EducationalAPP"),ServiceLifetime.Scoped, ServiceLifetime.Scoped);
             services.AddMvc();
             services.AddScoped<IUnitOfWork<ApplicationDbContext>, UnitOfWork<ApplicationDbContext>>();
-            services.AddScoped<IRepository<Order>, Repository<Order>>();
-            services.AddScoped<IRepository<Product>, Repository<Product>>();
-            services.AddScoped<IRepository<Supplier>, Repository<Supplier>>();
+            services.AddSingleton<ApplicationDbContextFactory>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IRepository<Order>, Repository<Order>>();
+            services.AddTransient<IRepository<Product>, Repository<Product>>();
+            services.AddTransient<IRepository<Supplier>, Repository<Supplier>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
