@@ -41,15 +41,17 @@ namespace EducationalApp.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+            app.UseStaticFiles();
             app.UseRouting();
+            app.UseStatusCodePages();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllerRoute(name: default, pattern: "{controller = Product}/{action=Index}/{id?}");
             });
         }
     }
