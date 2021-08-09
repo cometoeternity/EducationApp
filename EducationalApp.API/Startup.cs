@@ -26,7 +26,6 @@ namespace EducationalApp.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase(databaseName:"EducationalAPP"),ServiceLifetime.Scoped, ServiceLifetime.Scoped);
             services.AddMvc();
             services.AddScoped<IUnitOfWork<ApplicationDbContext>, UnitOfWork<ApplicationDbContext>>();
             services.AddSingleton<ApplicationDbContextFactory>();

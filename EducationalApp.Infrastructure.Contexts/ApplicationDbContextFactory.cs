@@ -13,7 +13,7 @@ namespace EducationalApp.Data
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>();
-            options.UseInMemoryDatabase("EducationalAPP");
+            options.UseSqlServer(@"Server=(localDB)\MSSQLLocalDB;Database=EdacationalApp;Trusted_Connection=true");
             return new ApplicationDbContext(options.Options);
         }
     }
