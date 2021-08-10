@@ -1,10 +1,10 @@
-﻿using EducationalApp.Model.Base;
+﻿using EducationalApp.Model.Base.EducationalApp.Model.Base;
 
 namespace EducationalApp.Model.Models
 {
     public class Order : BaseEntity
     {
-        
+
         public string Name { get; set; }
         public string State { get; set; }
         public string City { get; set; }

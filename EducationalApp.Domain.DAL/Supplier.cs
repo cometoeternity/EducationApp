@@ -1,4 +1,5 @@
-﻿using EducationalApp.Model.Base;
+﻿
+using EducationalApp.Model.Base.EducationalApp.Model.Base;
 
 namespace EducationalApp.Model.Models
 {
