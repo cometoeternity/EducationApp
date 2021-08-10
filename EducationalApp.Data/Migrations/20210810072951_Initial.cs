@@ -12,14 +12,14 @@ namespace EducationalApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StreetName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FlatNumber = table.Column<int>(type: "int", nullable: true),
-                    Zip = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    State = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false),
+                    City = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    StreetName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    HouseNumber = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    FlatNumber = table.Column<int>(type: "int", maxLength: 5, nullable: false),
+                    Zip = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -32,9 +32,9 @@ namespace EducationalApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -48,10 +48,10 @@ namespace EducationalApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactPerson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    ContactNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    ContactEmail = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
+                    ContactPerson = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

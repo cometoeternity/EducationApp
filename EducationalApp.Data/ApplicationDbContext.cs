@@ -1,4 +1,5 @@
-﻿using EducationalApp.Model.Models;
+﻿using EducationalApp.Data.Configuration;
+using EducationalApp.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducationalApp.Data
@@ -19,6 +20,13 @@ namespace EducationalApp.Data
         {
             optionsBuilder.UseSqlServer(@"Server=(localDB)\MSSQLLocalDB;Database=EdacationalApp;Trusted_Connection=true");
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new SupplierConfiguration());
         }
     }
 }  
