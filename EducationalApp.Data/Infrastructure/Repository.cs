@@ -1,7 +1,10 @@
 ﻿using EducationalApp.Model.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace EducationalApp.Data.Infrastructure
 {
@@ -10,22 +13,20 @@ namespace EducationalApp.Data.Infrastructure
 
         private DbSet<T> _entities;
         private bool _disposed = false;
-
-        public ApplicationDbContext Context { get; set; }
+        private ApplicationDbContext _context;
 
         public Repository(ApplicationDbContext context)
         {
-            Context = context;
+            _context = context;
         }
         protected virtual DbSet<T> Entities
         {
-            get { return _entities ?? (_entities = Context.Set<T>()); }
+            get { return _entities ?? (_entities = _context.Set<T>()); }
         }
         public void Delete(Guid id)
         {
             T entity = _entities.SingleOrDefault(e => e.Id == id);
             _entities.Remove(entity);
-            Context.SaveChanges();
         }
 
         public IQueryable<T> GetAll() => _entities.AsQueryable();
@@ -38,13 +39,13 @@ namespace EducationalApp.Data.Infrastructure
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
             _entities.Add(entity);
-            Context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
-            Context.SaveChanges();
+            _entities.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -53,7 +54,7 @@ namespace EducationalApp.Data.Infrastructure
             {
                 if (disposing)
                 {
-                    Context.Dispose();
+                    _context.Dispose();
                 }
             }
             _disposed = true;
@@ -64,5 +65,19 @@ namespace EducationalApp.Data.Infrastructure
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public T Get(Expression<Func<T, bool>> where)
+        {
+            return _entities.Where<T>(where).FirstOrDefault<T>();
+        }
+
+        public void Delete(Expression<Func<T, bool>> where)
+        {
+            IEnumerable<T> objects = _entities.Where<T>(where).AsEnumerable();
+            foreach (T obj in objects)
+                _entities.Remove(obj);
+        }
+
+
     }
 }

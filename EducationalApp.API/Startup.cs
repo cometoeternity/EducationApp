@@ -22,7 +22,7 @@ namespace EducationalApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IUnitOfWork<ApplicationDbContext>, UnitOfWork<ApplicationDbContext>>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ApplicationDbContextFactory>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IRepository<Order>, Repository<Order>>();

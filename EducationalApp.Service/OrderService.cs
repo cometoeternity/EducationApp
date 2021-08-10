@@ -20,49 +20,57 @@ namespace EducationalApp.Service
     }
     public class OrderService : IOrderService
     {
-        private readonly IOrderRepository _orderRepository;
+ 
         private readonly IUnitOfWork _unitOfWork;
 
-        public OrderService(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
+        public OrderService(IUnitOfWork unitOfWork)
         {
-            _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
         }
 
         public Order CreateOrder(Order order)
         {
-            _orderRepository.Insert(order);
-            SaveOrder();
+            try
+            {
+                _unitOfWork.CreateTransaction();
+                _unitOfWork.OrderRepository.Insert(order);
+                SaveOrder();
+            }
+            catch(Exception /*ex*/)
+            {
+                _unitOfWork.Rollback();
+            }
             return order;
         }
 
         public void DeleteOrder(Guid id)
         {
-            _orderRepository.Delete(id);
+            _unitOfWork.OrderRepository.Delete(id);
             SaveOrder();
         }
 
         public Order GetOrder(Guid id)
         {
-            var order = _orderRepository.GetById(id);
+            var order = _unitOfWork.OrderRepository.GetById(id);
             return order;
         }
 
         public IEnumerable<Order> GetOrders()
         {
-            var orders = _orderRepository.GetAll().OrderByDescending(d => d.CreatedAt);
+            var orders = _unitOfWork.OrderRepository.GetAll().OrderByDescending(d => d.CreatedAt);
             return orders;
 
         }
 
         public void SaveOrder()
         {
+            _unitOfWork.Save();
             _unitOfWork.Commit();
         }
 
         public void UpdateOrder(Order order)
         {
-            _orderRepository.Update(order);
+            _unitOfWork.OrderRepository.Update(order);
             SaveOrder();
         }
     }
