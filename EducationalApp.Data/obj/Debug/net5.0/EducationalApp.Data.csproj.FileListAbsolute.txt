@@ -1,0 +1,15 @@
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\bin\Debug\net5.0\EducationalApp.Data.deps.json
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\bin\Debug\net5.0\EducationalApp.Data.dll
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\bin\Debug\net5.0\ref\EducationalApp.Data.dll
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\bin\Debug\net5.0\EducationalApp.Data.pdb
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\bin\Debug\net5.0\EducationalApp.Model.dll
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\bin\Debug\net5.0\EducationalApp.Model.pdb
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.csproj.AssemblyReference.cache
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.AssemblyInfoInputs.cache
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.AssemblyInfo.cs
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.csproj.CopyComplete
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.dll
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\ref\EducationalApp.Data.dll
+C:\Users\pavlov\source\repos\EducationApp\EducationalApp.Data\obj\Debug\net5.0\EducationalApp.Data.pdb

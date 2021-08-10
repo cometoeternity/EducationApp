@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EducationalApp.Infrastructure.Contexts\EducationalApp.Data.csproj" />
+    <ProjectReference Include="..\EducationalApp.Data\EducationalApp.Data.csproj" />
   </ItemGroup>
 
  

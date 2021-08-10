@@ -7,7 +7,7 @@ namespace EducationalApp.Data.Infrastructure
 {
     public class Repository<T> : IDisposable, IRepository<T> where T : BaseEntity
     {
-        
+
         private DbSet<T> _entities;
         private bool _disposed = false;
 
@@ -22,7 +22,7 @@ namespace EducationalApp.Data.Infrastructure
             get { return _entities ?? (_entities = Context.Set<T>()); }
         }
         public Repository(IUnitOfWork<ApplicationDbContext> unitOfWork) : this(unitOfWork.Context)
-        {}
+        { }
         public void Delete(Guid id)
         {
             T entity = _entities.SingleOrDefault(e => e.Id == id);
@@ -34,7 +34,7 @@ namespace EducationalApp.Data.Infrastructure
 
 
         public T GetById(Guid id) => _entities.Find(id);
-       
+
 
         public void Insert(T entity)
         {
@@ -51,9 +51,9 @@ namespace EducationalApp.Data.Infrastructure
 
         protected virtual void Dispose(bool disposing)
         {
-            if(!this._disposed)
+            if (!this._disposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     Context.Dispose();
                 }

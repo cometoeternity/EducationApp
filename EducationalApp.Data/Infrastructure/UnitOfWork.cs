@@ -17,9 +17,9 @@ namespace EducationalApp.Data.Infrastructure
         {
             _context = context;
         }
-        public TContext Context 
-        { 
-            get { return _context; } 
+        public TContext Context
+        {
+            get { return _context; }
         }
 
         public void Commit()
@@ -38,12 +38,12 @@ namespace EducationalApp.Data.Infrastructure
             GC.SuppressFinalize(this);
         }
 
-       protected virtual void Dispose(bool disposing)
-       {
+        protected virtual void Dispose(bool disposing)
+        {
             if (!_disposed)
                 if (disposing) _context.Dispose();
             _disposed = true;
-       }
+        }
 
         public void Rollback()
         {
@@ -57,7 +57,7 @@ namespace EducationalApp.Data.Infrastructure
             {
                 _context.SaveChanges();
             }
-            catch(DbException dbEx)
+            catch (DbException dbEx)
             {
                 throw new Exception("Error from Unit Of Work Save Method", dbEx);
             }
