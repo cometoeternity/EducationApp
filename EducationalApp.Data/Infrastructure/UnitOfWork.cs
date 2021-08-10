@@ -1,4 +1,5 @@
-﻿using EducationalApp.Model.Base;
+﻿using EducationalApp.Data.Repository;
+using EducationalApp.Model.Base;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -6,22 +7,47 @@ using System.Data.Common;
 
 namespace EducationalApp.Data.Infrastructure
 {
-    public class UnitOfWork<TContext> : IUnitOfWork<TContext>, IDisposable where TContext : ApplicationDbContext
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly TContext _context;
+        private readonly ApplicationDbContext _context;
         private bool _disposed;
         private IDbContextTransaction _objTran;
         private Dictionary<string, object> _repositories;
+        private IProductRepository _productRepository;
+        private IOrderRepository _orderRepository;
+        private ISupplierRepository _supplierRepository;
 
-        public UnitOfWork(TContext context)
+        public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
-        public TContext Context
+        public ApplicationDbContext Context
         {
             get { return _context; }
         }
 
+        public IProductRepository ProductRepository
+        {
+            get
+            {
+                return _productRepository = _productRepository ?? new ProductRepository(_context);
+            }
+        }
+        public IOrderRepository OrderRepository
+        {
+            get
+            {
+                return _orderRepository = _orderRepository ?? new OrderRepository(_context);
+            }
+        }
+
+        public ISupplierRepository SupplierRepository
+        {
+            get
+            {
+                return _supplierRepository = _supplierRepository ?? new SuppliersRepository(_context);
+            }
+        }
         public void Commit()
         {
             _objTran.Commit();
@@ -29,7 +55,7 @@ namespace EducationalApp.Data.Infrastructure
 
         public void CreateTransaction()
         {
-            _objTran = _context.Database.BeginTransaction();
+            _objTran = Context.Database.BeginTransaction();
         }
 
         public void Dispose()
@@ -41,7 +67,7 @@ namespace EducationalApp.Data.Infrastructure
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
-                if (disposing) _context.Dispose();
+                if (disposing) Context.Dispose();
             _disposed = true;
         }
 
@@ -55,7 +81,7 @@ namespace EducationalApp.Data.Infrastructure
         {
             try
             {
-                _context.SaveChanges();
+                Context.SaveChanges();
             }
             catch (DbException dbEx)
             {

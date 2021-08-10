@@ -1,10 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EducationalApp.Data.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace EducationalApp.Data.Infrastructure
 {
-    public interface IUnitOfWork<TContext> where TContext : DbContext
+    public interface IUnitOfWork
     {
-        TContext Context { get; }
+        IProductRepository ProductRepository { get; }
+        IOrderRepository OrderRepository { get; }
+        ISupplierRepository SupplierRepository { get; }
+
         void CreateTransaction();
         void Commit();
         void Rollback();

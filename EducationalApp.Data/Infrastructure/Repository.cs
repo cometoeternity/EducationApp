@@ -21,8 +21,6 @@ namespace EducationalApp.Data.Infrastructure
         {
             get { return _entities ?? (_entities = Context.Set<T>()); }
         }
-        public Repository(IUnitOfWork<ApplicationDbContext> unitOfWork) : this(unitOfWork.Context)
-        { }
         public void Delete(Guid id)
         {
             T entity = _entities.SingleOrDefault(e => e.Id == id);
