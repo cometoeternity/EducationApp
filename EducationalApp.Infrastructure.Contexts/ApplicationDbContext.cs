@@ -1,4 +1,4 @@
-﻿using EducationalApp.Model;
+﻿using EducationalApp.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducationalApp.Data
