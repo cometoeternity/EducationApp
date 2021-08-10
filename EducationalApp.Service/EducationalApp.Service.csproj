@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EducationalApp.Data\EducationalApp.Data.csproj" />
+    <ProjectReference Include="..\EducationalApp.Model\EducationalApp.Model.csproj" />
+  </ItemGroup>
+
 </Project>
