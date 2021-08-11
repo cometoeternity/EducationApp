@@ -1,5 +1,6 @@
 ﻿using EducationalApp.Data.Repository;
 using EducationalApp.Model.Base;
+using EducationalApp.Model.Models;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace EducationalApp.Data.Infrastructure
         private bool _disposed;
         private IDbContextTransaction _objTran;
         private Dictionary<string, object> _repositories;
-        private IProductRepository _productRepository;
-        private IOrderRepository _orderRepository;
-        private ISupplierRepository _supplierRepository;
+        private IRepository<Product> _productRepository;
+        private IRepository<Order> _orderRepository;
+        private IRepository<Supplier> _supplierRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -26,14 +27,14 @@ namespace EducationalApp.Data.Infrastructure
             get { return _context; }
         }
 
-        public IProductRepository ProductRepository
+        public IRepository<Product> ProductRepository
         {
             get
             {
                 return _productRepository = _productRepository ?? new ProductRepository(_context);
             }
         }
-        public IOrderRepository OrderRepository
+        public IRepository<Order> OrderRepository
         {
             get
             {
@@ -41,7 +42,7 @@ namespace EducationalApp.Data.Infrastructure
             }
         }
 
-        public ISupplierRepository SupplierRepository
+        public IRepository<Supplier> SupplierRepository
         {
             get
             {

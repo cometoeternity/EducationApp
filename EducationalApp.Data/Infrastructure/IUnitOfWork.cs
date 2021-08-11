@@ -1,13 +1,14 @@
 ﻿using EducationalApp.Data.Repository;
+using EducationalApp.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducationalApp.Data.Infrastructure
 {
     public interface IUnitOfWork
     {
-        IProductRepository ProductRepository { get; }
-        IOrderRepository OrderRepository { get; }
-        ISupplierRepository SupplierRepository { get; }
+        IRepository<Product> ProductRepository { get; }
+        IRepository<Order> OrderRepository { get; }
+        IRepository<Supplier> SupplierRepository { get; }
 
         void CreateTransaction();
         void Commit();

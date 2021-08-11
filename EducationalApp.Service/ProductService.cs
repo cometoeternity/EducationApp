@@ -1,11 +1,7 @@
 ﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Data.Repository;
 using EducationalApp.Model.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalApp.Service
 {
@@ -19,7 +15,6 @@ namespace EducationalApp.Service
         IEnumerable<Product> GetProducts();
         void DeleteProduct(Guid id);
         void SaveProduct();
-
     }
     public class ProductService : IProductService
     {

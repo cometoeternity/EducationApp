@@ -3,12 +3,10 @@ using EducationalApp.Model.Models;
 
 namespace EducationalApp.Data.Repository
 {
-    public class SuppliersRepository : Repository<Supplier>, ISupplierRepository
+    public class SuppliersRepository : Repository<Supplier>, IRepository<Supplier>
     {
         public SuppliersRepository(ApplicationDbContext context) : base(context)
         { }
 
     }
-    public interface ISupplierRepository : IRepository<Supplier>
-    { }
 }

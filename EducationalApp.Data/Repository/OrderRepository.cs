@@ -3,11 +3,9 @@ using EducationalApp.Model.Models;
 
 namespace EducationalApp.Data.Repository
 {
-    public class OrderRepository : Repository<Order>, IOrderRepository
+    public class OrderRepository : Repository<Order>, IRepository<Order>
     {
         public OrderRepository(ApplicationDbContext context) : base(context)
         { }
     }
-    public interface IOrderRepository : IRepository<Order>
-    { }
 }

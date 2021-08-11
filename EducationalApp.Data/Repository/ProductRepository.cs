@@ -3,11 +3,9 @@ using EducationalApp.Model.Models;
 
 namespace EducationalApp.Data.Repository
 {
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : Repository<Product>, IRepository<Product>
     {
         public ProductRepository(ApplicationDbContext context) : base(context)
         { }
     }
-    public interface IProductRepository : IRepository<Product>
-    { }
 }
