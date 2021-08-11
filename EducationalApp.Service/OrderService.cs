@@ -1,6 +1,7 @@
 ﻿using EducationalApp.Data.Infrastructure;
 using EducationalApp.Data.Repository;
 using EducationalApp.Model.Models;
+using EducationalApp.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,6 @@ using System.Threading.Tasks;
 
 namespace EducationalApp.Service
 {
-    public interface IOrderService
-    {
-        IEnumerable<Order> GetOrders();
-        Order GetOrder(Guid id);
-        Order CreateOrder(Order order);
-        void UpdateOrder(Order order);
-        void DeleteOrder(Guid id);
-        void SaveOrder();
-    }
     public class OrderService : IOrderService
     {
  

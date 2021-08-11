@@ -15,11 +15,9 @@ namespace EducationalApp.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localDB)\MSSQLLocalDB;Database=EdacationalApp;Trusted_Connection=true");
-            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +26,7 @@ namespace EducationalApp.Data
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new SupplierConfiguration());
         }
+
     }
 }  
 

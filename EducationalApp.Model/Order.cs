@@ -1,4 +1,5 @@
 ﻿using EducationalApp.Model.Base;
+using System.Collections.Generic;
 
 namespace EducationalApp.Model.Models
 {
@@ -13,5 +14,6 @@ namespace EducationalApp.Model.Models
         public int? FlatNumber { get; set; }
         public string Zip { get; set; }
         public string Country { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }

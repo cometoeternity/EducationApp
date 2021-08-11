@@ -16,6 +16,7 @@ namespace EducationalApp.Data.Configuration
             builder.Property(p => p.Country).IsRequired().HasMaxLength(25);
             builder.Property(p => p.HouseNumber).IsRequired().HasMaxLength(5);
             builder.Property(p => p.FlatNumber).IsRequired().HasMaxLength(5);
+            builder.HasMany(p => p.Products).WithOne();
         }
     }
 }

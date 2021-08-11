@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EducationalApp.Data\EducationalApp.Data.csproj" />
     <ProjectReference Include="..\EducationalApp.Model\EducationalApp.Model.csproj" />
   </ItemGroup>

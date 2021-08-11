@@ -1,5 +1,6 @@
 ﻿using EducationalApp.Data.Infrastructure;
 using EducationalApp.Model.Models;
+using EducationalApp.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,6 @@ using System.Threading.Tasks;
 
 namespace EducationalApp.Service
 {
-    public interface ISupplierService
-    {
-        Supplier CreateSupplier(Supplier supplier);
-        void EditSupplier(Supplier supplier);
-        void DeleteSupplier(Guid id);
-        void SaveSupplier();
-        IEnumerable<Supplier> GetSuppliers();
-        Supplier GetSupplierByName(string name);
-        Supplier GetSupplierByNumber(string number);
-        Supplier GetSupplierByEmail(string email);
-
-    }
-
     public class SupplierService : ISupplierService
     {
         private readonly IUnitOfWork _unitOfWork;
