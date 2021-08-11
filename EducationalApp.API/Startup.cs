@@ -1,6 +1,8 @@
+using AutoMapper;
 using EducationalApp.Data;
 using EducationalApp.Data.Infrastructure;
 using EducationalApp.Model.Models;
+using EducationalApp.Service.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -22,7 +24,14 @@ namespace EducationalApp.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+            services.AddMvc();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:EducationalApp:ConnectionString"]));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

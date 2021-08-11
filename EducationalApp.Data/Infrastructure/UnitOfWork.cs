@@ -12,7 +12,6 @@ namespace EducationalApp.Data.Infrastructure
     {
         private readonly ApplicationDbContext _context;
         private bool _disposed;
-        private IDbContextTransaction _objTran;
         private Dictionary<string, object> _repositories;
         private IRepository<Product> _productRepository;
         private IRepository<Order> _orderRepository;
@@ -21,10 +20,6 @@ namespace EducationalApp.Data.Infrastructure
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-        }
-        public ApplicationDbContext Context
-        {
-            get { return _context; }
         }
 
         public IRepository<Product> ProductRepository
@@ -49,16 +44,6 @@ namespace EducationalApp.Data.Infrastructure
                 return _supplierRepository = _supplierRepository ?? new SuppliersRepository(_context);
             }
         }
-        public void Commit()
-        {
-            _objTran.Commit();
-        }
-
-        public void CreateTransaction()
-        {
-            _objTran = Context.Database.BeginTransaction();
-        }
-
         public void Dispose()
         {
             Dispose(true);
@@ -68,21 +53,20 @@ namespace EducationalApp.Data.Infrastructure
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
-                if (disposing) Context.Dispose();
+                if (disposing) _context.Dispose();
             _disposed = true;
         }
 
         public void Rollback()
         {
-            _objTran.Rollback();
-            _objTran.Dispose();
+            _context.Dispose();
         }
 
         public void Save()
         {
             try
             {
-                Context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbException dbEx)
             {

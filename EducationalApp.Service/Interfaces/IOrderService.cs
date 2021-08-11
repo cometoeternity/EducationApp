@@ -1,9 +1,6 @@
 ﻿using EducationalApp.Model.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalApp.Service.Interfaces
 {
@@ -11,8 +8,8 @@ namespace EducationalApp.Service.Interfaces
     {
         IEnumerable<Order> GetOrders();
         Order GetOrder(Guid id);
-        Order CreateOrder(Order order);
-        void UpdateOrder(Order order);
+        Order CreateOrder(Order orderDTO);
+        void UpdateOrder(Order orderDTO);
         void DeleteOrder(Guid id);
         void SaveOrder();
     }

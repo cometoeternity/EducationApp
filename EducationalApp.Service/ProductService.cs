@@ -1,5 +1,5 @@
 ﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Model.Models;
+using EducationalApp.Service.DTO;
 using EducationalApp.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,11 +15,10 @@ namespace EducationalApp.Service
             _unitOfWork = unitOfWork;
         }
 
-        public Product CreateProduct(Product product)
+        public ProductDTO CreateProduct(ProductDTO product)
         {
             try
             {
-                _unitOfWork.CreateTransaction();
                 _unitOfWork.ProductRepository.Insert(product);
                 SaveProduct();
             }
@@ -46,20 +45,20 @@ namespace EducationalApp.Service
             UpdateProduct(product);
         }
 
-        public Product GetProductByCategory(string category)
+        public ProductDTO GetProductByCategory(string category)
         {
             var products = _unitOfWork.ProductRepository.Get(p => p.Category.Contains(category));
             return products;
         }
 
-        public Product GetProductByName(string name)
+        public ProductDTO GetProductByName(string name)
         {
             var products = _unitOfWork.ProductRepository.Get(p => p.Name.Contains(name));
             return products;
         }
 
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<ProductDTO> GetProducts()
         {
             var product = _unitOfWork.ProductRepository.GetAll();
             return product;
@@ -68,10 +67,9 @@ namespace EducationalApp.Service
         public void SaveProduct()
         {
             _unitOfWork.Save();
-            _unitOfWork.Commit();
         }
 
-        public void UpdateProduct(Product product)
+        public void UpdateProduct(ProductDTO product)
         {
             _unitOfWork.ProductRepository.Update(product);
             SaveProduct();

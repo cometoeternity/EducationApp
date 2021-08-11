@@ -1,18 +1,14 @@
 ﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Data.Repository;
 using EducationalApp.Model.Models;
 using EducationalApp.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalApp.Service
 {
     public class OrderService : IOrderService
     {
- 
         private readonly IUnitOfWork _unitOfWork;
 
         public OrderService(IUnitOfWork unitOfWork)
@@ -24,7 +20,6 @@ namespace EducationalApp.Service
         {
             try
             {
-                _unitOfWork.CreateTransaction();
                 _unitOfWork.OrderRepository.Insert(order);
                 SaveOrder();
             }
@@ -57,7 +52,6 @@ namespace EducationalApp.Service
         public void SaveOrder()
         {
             _unitOfWork.Save();
-            _unitOfWork.Commit();
         }
 
         public void UpdateOrder(Order order)

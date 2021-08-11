@@ -26,7 +26,6 @@ namespace EducationalApp.Data
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new SupplierConfiguration());
         }
-
     }
 }  
 

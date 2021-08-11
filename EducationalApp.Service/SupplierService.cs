@@ -1,11 +1,8 @@
 ﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Model.Models;
+using EducationalApp.Service.DTO;
 using EducationalApp.Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalApp.Service
 {
@@ -18,11 +15,10 @@ namespace EducationalApp.Service
             _unitOfWork = unitOfWork;
         }
 
-        public Supplier CreateSupplier(Supplier supplier)
+        public SupplierDTO CreateSupplier(SupplierDTO supplier)
         {
             try
             {
-                _unitOfWork.CreateTransaction();
                 _unitOfWork.SupplierRepository.Insert(supplier);
                 SaveSupplier();
             }
@@ -39,31 +35,31 @@ namespace EducationalApp.Service
             SaveSupplier();
         }
 
-        public void EditSupplier(Supplier supplier)
+        public void EditSupplier(SupplierDTO supplier)
         {
             _unitOfWork.SupplierRepository.Update(supplier);
             SaveSupplier();
         }
 
-        public Supplier GetSupplierByEmail(string email)
+        public SupplierDTO GetSupplierByEmail(string email)
         {
             var suppliers = _unitOfWork.SupplierRepository.Get(s => s.ContactEmail.Contains(email));
             return suppliers;
         }
 
-        public Supplier GetSupplierByName(string name)
+        public SupplierDTO GetSupplierByName(string name)
         {
             var suppliers = _unitOfWork.SupplierRepository.Get(s => s.Name.Contains(name));
             return suppliers;
         }
 
-        public Supplier GetSupplierByNumber(string number)
+        public SupplierDTO GetSupplierByNumber(string number)
         {
             var suppliers = _unitOfWork.SupplierRepository.Get(s => s.ContactNumber.Contains(number));
             return suppliers;
         }
 
-        public IEnumerable<Supplier> GetSuppliers()
+        public IEnumerable<SupplierDTO> GetSuppliers()
         {
             var suppliers = _unitOfWork.SupplierRepository.GetAll();
             return suppliers;
@@ -72,7 +68,6 @@ namespace EducationalApp.Service
         public void SaveSupplier()
         {
             _unitOfWork.Save();
-            _unitOfWork.Commit();
         }
     }
 }

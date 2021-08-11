@@ -1,6 +1,4 @@
-﻿using EducationalApp.Data.Repository;
-using EducationalApp.Model.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using EducationalApp.Model.Models;
 
 namespace EducationalApp.Data.Infrastructure
 {
@@ -9,9 +7,6 @@ namespace EducationalApp.Data.Infrastructure
         IRepository<Product> ProductRepository { get; }
         IRepository<Order> OrderRepository { get; }
         IRepository<Supplier> SupplierRepository { get; }
-
-        void CreateTransaction();
-        void Commit();
         void Rollback();
         void Save();
     }
