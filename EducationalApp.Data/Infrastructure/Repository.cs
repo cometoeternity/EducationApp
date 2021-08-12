@@ -10,7 +10,6 @@ namespace EducationalApp.Data.Infrastructure
 {
     public class Repository<T> : IDisposable, IRepository<T> where T : BaseEntity
     {
-
         private DbSet<T> _entities;
         private bool _disposed = false;
         private ApplicationDbContext _context;
@@ -73,11 +72,14 @@ namespace EducationalApp.Data.Infrastructure
 
         public void Delete(Expression<Func<T, bool>> where)
         {
-            IEnumerable<T> objects = _entities.Where<T>(where).AsEnumerable();
+            IQueryable<T> objects = _entities.Where<T>(where).AsQueryable();
             foreach (T obj in objects)
                 _entities.Remove(obj);
         }
 
-
+        public IQueryable<T> GetMany(Expression<Func<T, bool>> where)
+        {
+            return _entities.Where<T>(where).AsQueryable();
+        }
     }
 }

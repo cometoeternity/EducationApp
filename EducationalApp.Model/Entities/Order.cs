@@ -12,7 +12,7 @@ namespace EducationalApp.Model.Entities
         public string StreetName { get; set; }
         public string HouseNumber { get; set; }
         public int? FlatNumber { get; set; }
-        public string Zip { get; set; }
+        public int Zip { get; set; }
         public string Country { get; set; }
         public virtual List<Product> Products { get; set; }
     }

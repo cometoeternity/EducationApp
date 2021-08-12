@@ -10,6 +10,7 @@ namespace EducationalApp.Model.Interfaces
         IQueryable<T> GetAll();
         T GetById(Guid id);
         T Get(Expression<Func<T, bool>> where);
+        IQueryable<T> GetMany(Expression<Func<T, bool>> where);
         void Insert(T entity);
         void Update(T entity);
         void Delete(Guid id);

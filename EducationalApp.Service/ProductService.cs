@@ -1,25 +1,30 @@
-﻿using EducationalApp.Common.DTO;
-using EducationalApp.Data.Infrastructure;
+﻿using AutoMapper;
+using EducationalApp.Common.DTO;
+using EducationalApp.Model.Entities;
 using EducationalApp.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EducationalApp.Service
 {
     public class ProductService : IProductService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ProductService(IUnitOfWork unitOfWork)
+        public ProductService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public ProductDTO Create(ProductDTO dto)
         {
+            var product = _mapper.Map<Product>(dto);
             try
             {
-                _unitOfWork.ProductRepository.Insert(dto);
+                _unitOfWork.ProductRepository.Insert(product);
             }
             catch (Exception /*ex*/)
             {
@@ -38,41 +43,47 @@ namespace EducationalApp.Service
         public void EditProduct(Guid id, string name, string description, string category, decimal price)
         {
             var product = _unitOfWork.ProductRepository.GetById(id);
-            product.Name = name;
-            product.Description = description;
-            product.Category = category;
-            product.UnitPrice = price;
-            Update(product);
+            var productDTO = _mapper.Map<ProductDTO>(product);
+            productDTO.Name = name;
+            productDTO.Description = description;
+            productDTO.Category = category;
+            productDTO.UnitPrice = price;
+            Update(productDTO);
         }
 
         public IEnumerable<ProductDTO> GetAll()
         {
-            var product = _unitOfWork.ProductRepository.GetAll();
-            return product;
+            var products = _unitOfWork.ProductRepository.GetAll().AsEnumerable();
+            var productDTO = _mapper.Map<IEnumerable<ProductDTO>>(products);
+            return productDTO;
         }
 
         public ProductDTO GetById(Guid id)
         {
             var product = _unitOfWork.ProductRepository.GetById(id);
-            return product;
+            var productDTO = _mapper.Map<ProductDTO>(product);
+            return productDTO;
         }
 
         public ProductDTO GetProductByCategory(string category)
         {
-            var products = _unitOfWork.ProductRepository.Get(p => p.Category.Contains(category));
-            return products;
+            var product = _unitOfWork.ProductRepository.Get(p => p.Category.Contains(category));
+            var productDTO = _mapper.Map<ProductDTO>(product);
+            return productDTO;
         }
 
         public ProductDTO GetProductByName(string name)
         {
-            var products = _unitOfWork.ProductRepository.Get(p => p.Name.Contains(name));
-            return products;
+            var product = _unitOfWork.ProductRepository.Get(p => p.Name.Contains(name));
+            var productDTO = _mapper.Map<ProductDTO>(product);
+            return productDTO;
         }
     
 
         public void Update(ProductDTO dto)
         {
-            _unitOfWork.ProductRepository.Update(dto);
+            var product = _mapper.Map<Product>(dto);
+            _unitOfWork.ProductRepository.Update(product);
         }
     }  
 }

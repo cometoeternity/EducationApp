@@ -18,7 +18,7 @@ namespace EducationalApp.Data.Migrations
                     StreetName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     HouseNumber = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     FlatNumber = table.Column<int>(type: "int", maxLength: 5, nullable: false),
-                    Zip = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Zip = table.Column<int>(type: "int", maxLength: 12, nullable: false),
                     Country = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

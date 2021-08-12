@@ -19,7 +19,7 @@ namespace EducationalApp.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EducationalApp.Model.Models.Order", b =>
+            modelBuilder.Entity("EducationalApp.Model.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,17 +63,16 @@ namespace EducationalApp.Data.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Zip")
-                        .IsRequired()
+                    b.Property<int>("Zip")
                         .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("EducationalApp.Model.Models.Product", b =>
+            modelBuilder.Entity("EducationalApp.Model.Entities.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,7 +109,7 @@ namespace EducationalApp.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("EducationalApp.Model.Models.Supplier", b =>
+            modelBuilder.Entity("EducationalApp.Model.Entities.Supplier", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,14 +143,14 @@ namespace EducationalApp.Data.Migrations
                     b.ToTable("Suppliers");
                 });
 
-            modelBuilder.Entity("EducationalApp.Model.Models.Product", b =>
+            modelBuilder.Entity("EducationalApp.Model.Entities.Product", b =>
                 {
-                    b.HasOne("EducationalApp.Model.Models.Order", null)
+                    b.HasOne("EducationalApp.Model.Entities.Order", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
                 });
 
-            modelBuilder.Entity("EducationalApp.Model.Models.Order", b =>
+            modelBuilder.Entity("EducationalApp.Model.Entities.Order", b =>
                 {
                     b.Navigation("Products");
                 });

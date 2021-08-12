@@ -2,6 +2,7 @@ using AutoMapper;
 using EducationalApp.Data;
 using EducationalApp.Data.Infrastructure;
 using EducationalApp.Model.Entities;
+using EducationalApp.Model.Interfaces;
 using EducationalApp.Service.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,8 +29,8 @@ namespace EducationalApp.API
             {
                 mc.AddProfile(new MappingProfile());
             });
-
             IMapper mapper = mapperConfig.CreateMapper();
+
             services.AddSingleton(mapper);
             services.AddMvc();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
