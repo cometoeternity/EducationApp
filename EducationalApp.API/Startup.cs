@@ -58,8 +58,10 @@ namespace EducationalApp.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(name: "default", pattern:"{controller=Product}/{action=List}/{id?}");
             });
+
+            SeedData.EnsurePopulated(app);
         }
     }
 }

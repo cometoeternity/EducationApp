@@ -1,20 +1,18 @@
-﻿using EducationalApp.Data;
-using EducationalApp.Data.Infrastructure;
-using EducationalApp.Data.Repository;
-using Microsoft.AspNetCore.Http;
+﻿using EducationalApp.Common.DTO;
+using EducationalApp.Model.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EducationalApp.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : Controller
     {
-       
+        private readonly IService<ProductDTO> _productService;
+
+        public ProductController(IService<ProductDTO> productService)
+        {
+            _productService = productService;
+        }
+
+        public IActionResult List() => View(_productService.GetAll());
     }
 }
