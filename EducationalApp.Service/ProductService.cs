@@ -1,6 +1,6 @@
-﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Service.DTO;
-using EducationalApp.Service.Interfaces;
+﻿using EducationalApp.Common.DTO;
+using EducationalApp.Data.Infrastructure;
+using EducationalApp.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -15,24 +15,24 @@ namespace EducationalApp.Service
             _unitOfWork = unitOfWork;
         }
 
-        public ProductDTO CreateProduct(ProductDTO product)
+        public ProductDTO Create(ProductDTO dto)
         {
             try
             {
-                _unitOfWork.ProductRepository.Insert(product);
-                SaveProduct();
+                _unitOfWork.ProductRepository.Insert(dto);
             }
             catch (Exception /*ex*/)
             {
                 _unitOfWork.Rollback();
             }
-            return product;
+            return dto;
         }
 
-        public void DeleteProduct(Guid id)
+
+
+        public void Delete(Guid id)
         {
             _unitOfWork.ProductRepository.Delete(id);
-            SaveProduct();
         }
 
         public void EditProduct(Guid id, string name, string description, string category, decimal price)
@@ -42,7 +42,19 @@ namespace EducationalApp.Service
             product.Description = description;
             product.Category = category;
             product.UnitPrice = price;
-            UpdateProduct(product);
+            Update(product);
+        }
+
+        public IEnumerable<ProductDTO> GetAll()
+        {
+            var product = _unitOfWork.ProductRepository.GetAll();
+            return product;
+        }
+
+        public ProductDTO GetById(Guid id)
+        {
+            var product = _unitOfWork.ProductRepository.GetById(id);
+            return product;
         }
 
         public ProductDTO GetProductByCategory(string category)
@@ -56,23 +68,12 @@ namespace EducationalApp.Service
             var products = _unitOfWork.ProductRepository.Get(p => p.Name.Contains(name));
             return products;
         }
+    
 
-
-        public IEnumerable<ProductDTO> GetProducts()
+        public void Update(ProductDTO dto)
         {
-            var product = _unitOfWork.ProductRepository.GetAll();
-            return product;
+            _unitOfWork.ProductRepository.Update(dto);
         }
-
-        public void SaveProduct()
-        {
-            _unitOfWork.Save();
-        }
-
-        public void UpdateProduct(ProductDTO product)
-        {
-            _unitOfWork.ProductRepository.Update(product);
-            SaveProduct();
-        }
-    }
+    }  
 }
+

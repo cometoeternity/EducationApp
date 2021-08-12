@@ -1,7 +1,7 @@
 using AutoMapper;
 using EducationalApp.Data;
 using EducationalApp.Data.Infrastructure;
-using EducationalApp.Model.Models;
+using EducationalApp.Model.Entities;
 using EducationalApp.Service.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

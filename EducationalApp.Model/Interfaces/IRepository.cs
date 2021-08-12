@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace EducationalApp.Data.Infrastructure
+namespace EducationalApp.Model.Interfaces
 {
     public interface IRepository<T> where T : BaseEntity
     {

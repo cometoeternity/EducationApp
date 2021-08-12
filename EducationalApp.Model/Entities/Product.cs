@@ -1,6 +1,6 @@
 ﻿using EducationalApp.Model.Base;
 
-namespace EducationalApp.Model.Models
+namespace EducationalApp.Model.Entities
 {
     public class Product : BaseEntity
     {

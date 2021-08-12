@@ -1,11 +1,10 @@
-﻿using EducationalApp.Model.Base;
+﻿using EducationalApp.Common.DTO.BaseDTO;
 using System.Collections.Generic;
 
-namespace EducationalApp.Model.Models
+namespace EducationalApp.Common.DTO
 {
-    public class Order : BaseEntity
+    public class OrderDTO : DTOBase
     {
-
         public string Name { get; set; }
         public string State { get; set; }
         public string City { get; set; }
@@ -14,6 +13,6 @@ namespace EducationalApp.Model.Models
         public int? FlatNumber { get; set; }
         public string Zip { get; set; }
         public string Country { get; set; }
-        public virtual List<Product> Products { get; set; }
+        public List<ProductDTO> ProductsDTO { get; set; }
     }
 }

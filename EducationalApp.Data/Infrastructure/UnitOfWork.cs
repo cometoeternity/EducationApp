@@ -1,7 +1,7 @@
 ﻿using EducationalApp.Data.Repository;
 using EducationalApp.Model.Base;
-using EducationalApp.Model.Models;
-using Microsoft.EntityFrameworkCore.Storage;
+using EducationalApp.Model.Entities;
+using EducationalApp.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

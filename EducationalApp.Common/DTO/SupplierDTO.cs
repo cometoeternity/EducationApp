@@ -1,8 +1,9 @@
-﻿using EducationalApp.Model.Base;
+﻿using EducationalApp.Common.DTO.BaseDTO;
 
-namespace EducationalApp.Model.Models
+
+namespace EducationalApp.Common.DTO
 {
-    public class Supplier : BaseEntity
+    public class SupplierDTO : DTOBase
     {
         public string Name { get; set; }
         public string ContactNumber { get; set; }

@@ -1,6 +1,7 @@
-﻿using EducationalApp.Model.Models;
+﻿using EducationalApp.Model.Entities;
+using EducationalApp.Model.Interfaces;
 
-namespace EducationalApp.Data.Infrastructure
+namespace EducationalApp.Model.Interfaces
 {
     public interface IUnitOfWork
     {

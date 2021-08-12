@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using EducationalApp.Model.Models;
-using EducationalApp.Service.DTO;
+using EducationalApp.Common.DTO;
+using EducationalApp.Model.Entities;
 
 namespace EducationalApp.Service.Mapping
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EducationalApp.Model.Models
+namespace EducationalApp.Model.Entities
 {
     public class Cart
     {

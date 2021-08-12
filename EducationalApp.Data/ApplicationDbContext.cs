@@ -1,5 +1,5 @@
 ﻿using EducationalApp.Data.Configuration;
-using EducationalApp.Model.Models;
+using EducationalApp.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducationalApp.Data

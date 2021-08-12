@@ -1,7 +1,6 @@
 ﻿using EducationalApp.Data;
 using EducationalApp.Data.Infrastructure;
 using EducationalApp.Data.Repository;
-using EducationalApp.Model.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

@@ -1,6 +1,6 @@
-﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Service.DTO;
-using EducationalApp.Service.Interfaces;
+﻿using EducationalApp.Common.DTO;
+using EducationalApp.Data.Infrastructure;
+using EducationalApp.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -15,30 +15,40 @@ namespace EducationalApp.Service
             _unitOfWork = unitOfWork;
         }
 
-        public SupplierDTO CreateSupplier(SupplierDTO supplier)
+        public SupplierDTO Create(SupplierDTO dto)
         {
             try
             {
-                _unitOfWork.SupplierRepository.Insert(supplier);
-                SaveSupplier();
+                _unitOfWork.SupplierRepository.Insert(dto);
             }
             catch (Exception /*ex*/)
             {
                 _unitOfWork.Rollback();
             }
-            return supplier;
+            return dto;
         }
 
-        public void DeleteSupplier(Guid id)
+
+        public void Delete(Guid id)
         {
             _unitOfWork.SupplierRepository.Delete(id);
-            SaveSupplier();
         }
 
         public void EditSupplier(SupplierDTO supplier)
         {
             _unitOfWork.SupplierRepository.Update(supplier);
-            SaveSupplier();
+        }
+
+        public IEnumerable<SupplierDTO> GetAll()
+        {
+            var suppliers = _unitOfWork.SupplierRepository.GetAll();
+            return suppliers;
+        }
+
+        public SupplierDTO GetById(Guid id)
+        {
+            var supplier = _unitOfWork.SupplierRepository.GetById(id);
+            return supplier;
         }
 
         public SupplierDTO GetSupplierByEmail(string email)
@@ -59,15 +69,10 @@ namespace EducationalApp.Service
             return suppliers;
         }
 
-        public IEnumerable<SupplierDTO> GetSuppliers()
-        {
-            var suppliers = _unitOfWork.SupplierRepository.GetAll();
-            return suppliers;
-        }
 
-        public void SaveSupplier()
+        public void Update(SupplierDTO dto)
         {
-            _unitOfWork.Save();
+            _unitOfWork.SupplierRepository.Update(dto);
         }
     }
 }

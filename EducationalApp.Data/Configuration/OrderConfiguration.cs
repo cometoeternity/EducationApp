@@ -1,4 +1,4 @@
-﻿using EducationalApp.Model.Models;
+﻿using EducationalApp.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

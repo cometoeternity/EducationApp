@@ -1,6 +1,6 @@
-﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Model.Models;
-using EducationalApp.Service.Interfaces;
+﻿using EducationalApp.Common.DTO;
+using EducationalApp.Data.Infrastructure;
+using EducationalApp.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,48 +16,43 @@ namespace EducationalApp.Service
             _unitOfWork = unitOfWork;
         }
 
-        public Order CreateOrder(Order order)
+        public OrderDTO Create(OrderDTO dto)
         {
             try
             {
-                _unitOfWork.OrderRepository.Insert(order);
-                SaveOrder();
+                _unitOfWork.OrderRepository.Insert(dto);
             }
-            catch(Exception /*ex*/)
+            catch (Exception /*ex*/)
             {
                 _unitOfWork.Rollback();
             }
-            return order;
+            return dto;
         }
 
-        public void DeleteOrder(Guid id)
+        
+        public void Delete(Guid id)
         {
             _unitOfWork.OrderRepository.Delete(id);
-            SaveOrder();
         }
 
-        public Order GetOrder(Guid id)
+
+        public IEnumerable<OrderDTO> GetAll()
+        {
+            var orders = _unitOfWork.OrderRepository.GetAll().OrderByDescending(d => d.CreatedAt);
+            return orders;
+        }
+
+        public OrderDTO GetById(Guid id)
         {
             var order = _unitOfWork.OrderRepository.GetById(id);
             return order;
         }
 
-        public IEnumerable<Order> GetOrders()
-        {
-            var orders = _unitOfWork.OrderRepository.GetAll().OrderByDescending(d => d.CreatedAt);
-            return orders;
 
+        public void Update(OrderDTO dto)
+        {
+            _unitOfWork.OrderRepository.Update(dto);
         }
 
-        public void SaveOrder()
-        {
-            _unitOfWork.Save();
-        }
-
-        public void UpdateOrder(Order order)
-        {
-            _unitOfWork.OrderRepository.Update(order);
-            SaveOrder();
-        }
     }
 }

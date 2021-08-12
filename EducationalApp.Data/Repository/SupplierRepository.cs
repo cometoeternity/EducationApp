@@ -1,5 +1,5 @@
 ﻿using EducationalApp.Data.Infrastructure;
-using EducationalApp.Model.Models;
+using EducationalApp.Model.Entities;
 
 namespace EducationalApp.Data.Repository
 {
